@@ -1,14 +1,15 @@
 package com.BC32.Project1.Service;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 public interface ICRUD<T, V> {
 
-    T register(T obj);
-    T modify(T obj);
+    Mono<T> register(T obj);
+    Mono<T> modify(T obj);
     Flux<T> list();
-    T listById(V id);
-    boolean delete(V id);
+    Mono<T> listById(V id);
+    Mono<Void> delete(V id);
 }

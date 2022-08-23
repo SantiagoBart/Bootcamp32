@@ -4,6 +4,7 @@ import com.BC32.Project1.Model.Client;
 import com.BC32.Project1.Service.IClientService;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -14,12 +15,12 @@ public class ClientImpl implements IClientService {
     private final CopyOnWriteArrayList<Client> clientList = new CopyOnWriteArrayList<>();
 
     @Override
-    public Client register(Client obj) {
-        return null;
+    public Mono<Client> register(Client obj) {
+        return Mono.fromRunnable(() -> clientList.add(obj));
     }
 
     @Override
-    public Client modify(Client obj) {
+    public Mono<Client> modify(Client obj) {
         return null;
     }
 
@@ -29,12 +30,14 @@ public class ClientImpl implements IClientService {
     }
 
     @Override
-    public Client listById(Integer id) {
-        return null;
+    public Mono<Client> listById(Integer idClient) {
+        return Flux.fromIterable(clientList)
+                .filter(customer -> customer.getIdClient().equals(idClient))
+                .next();
     }
 
     @Override
-    public boolean delete(Integer id) {
-        return false;
+    public Mono<Void> delete(Integer id) {
+        return null;
     }
 }
