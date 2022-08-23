@@ -30,7 +30,7 @@ public class Client {
     private String phone;
 
     @ManyToOne
-    @JoinColumn(name = "idClientType", nullable = false, foreignKey =@ForeignKey(name = "fk_type_client"))
-    private ProductTypes idClientType;
+    @JoinColumn(name = "idClientType", nullable = false, foreignKey =@ForeignKey(name = "fk_client_clientType"))
+    private ClientType clientType;
 
 }
