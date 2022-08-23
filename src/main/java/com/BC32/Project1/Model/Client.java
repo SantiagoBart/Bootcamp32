@@ -29,4 +29,8 @@ public class Client {
     @Column
     private String phone;
 
+    @ManyToOne
+    @JoinColumn(name = "idClientType", nullable = false, foreignKey =@ForeignKey(name = "fk_type_client"))
+    private ProductTypes idClientType;
+
 }
