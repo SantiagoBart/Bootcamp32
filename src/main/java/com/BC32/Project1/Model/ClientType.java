@@ -1,15 +1,19 @@
 package com.BC32.Project1.Model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
+@NoArgsConstructor
+@Document(collection = "clientType")
+@ToString
 public class ClientType {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idClientType;
 
-    @Column
     private String name;
 }
