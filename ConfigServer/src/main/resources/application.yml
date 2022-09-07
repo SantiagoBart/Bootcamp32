@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: ConfigServer
+  cloud:
+    config:
+      server:
+        git:
+          uri: http://github.com/SantiagoBart/Bootcamp32Config.git
+          username: santiagobart
+          password: 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
+  security:
+    user:
+      name: root
+      password: 12345678
