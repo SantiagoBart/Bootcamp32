@@ -2,7 +2,7 @@ server:
   port: 8091
 spring:
   application:
-    name: Micro01
+    name: micro01
   data:
     mongodb:
       database: NTTDATA_Botcamp32
@@ -10,7 +10,34 @@ spring:
       port: 27017
   cloud:
     config:
-      uri: http://localhost:8080
+      uri: http://localhost:8089
       username: root
       password: 12345678
-      
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web: 
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+resilience4j:
+  circuitbreaker:
+    instances:
+      productType: 
+        register-health-indicator: true
+        event-consumer-buffer-size: 10
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 5
+        failure-rate-threshold: 5
+        wait-duration-in-open-state: 5s
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+    
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://localhost:8761/eureka

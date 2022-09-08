@@ -2,7 +2,7 @@ server:
   port: 8092
 spring:
   application:
-    name: Micro02
+    name: micro02
   data:
     mongodb:
       database: NTTDATA_Botcamp32
@@ -10,7 +10,10 @@ spring:
       port: 27017
   cloud:
     config:
-      uri: http://localhost:8080
+      uri: http://localhost:8089
       username: root
       password: 12345678
-      
+eureka:
+  client:
+    service-url: 
+      defaultZone: http://localhost:8761/eureka     

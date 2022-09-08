@@ -28,8 +28,7 @@ public class CustomerController {
 	private ICustomerService service;
 	
 	@GetMapping("/list")
-	public ResponseEntity<Flux<Customer>> store()
-	{
+	public ResponseEntity<Flux<Customer>> store(){
 		Flux<Customer> response = null;
 		try
 		{
@@ -50,8 +49,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity<Mono<Customer>> create(@RequestBody Customer request)
-	{
+	public ResponseEntity<Mono<Customer>> create(@RequestBody Customer request){
 		Mono<Customer> response = null;
 		try
 		{

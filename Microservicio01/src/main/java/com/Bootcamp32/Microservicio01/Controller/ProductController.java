@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Bootcamp32.Microservicio01.Model.Product;
 import com.Bootcamp32.Microservicio01.Service.IProductService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -89,5 +91,34 @@ public class ProductController {
 		}
 		
 		return new ResponseEntity<Mono<Void>>(response, HttpStatus.OK);
+	}
+	
+	@GetMapping("/edit/{id}")
+	@CircuitBreaker(name = "productType", fallbackMethod = "fallbackGetProductType")
+	public ResponseEntity<Mono<Product>> edit(@PathVariable Integer id)
+	{
+		Mono<Product> response = null;
+		
+		try
+		{
+			logger.info("Productos: Obtener Iniciando");
+			response = service.findById(id);
+		}
+		catch(Exception ex)
+		{
+			logger.info("Productos: Obtener Error: " + ex.getMessage());
+			return new ResponseEntity<Mono<Product>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		finally
+		{
+			logger.info("Productos: Obtener Terminado");
+		}
+		
+		return new ResponseEntity<Mono<Product>>(response, HttpStatus.OK);
+	}
+	
+	public Mono<String> fallbackGetProductType(Integer id, RuntimeException runexcep)
+	{
+		return Mono.just("No se puede obtener los datos de Producto");
 	}
 }
