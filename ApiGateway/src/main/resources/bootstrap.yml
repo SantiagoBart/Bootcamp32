@@ -1,8 +1,9 @@
 spring:
   application:
-    name: api-gateway
+    name: Api-Gateway
   cloud:
     config:
       uri: http://localhost:8089
       username: root
       password: 12345678
+      label: main

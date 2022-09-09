@@ -4,12 +4,12 @@ spring:
   application:
     name: ConfigServer
   cloud:
-    config:
+    config:      
       server:
         git:
           uri: http://github.com/SantiagoBart/Bootcamp32Config.git
           username: santiagobart
-          password: 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
+          password: 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            
   security:
     user:
       name: root

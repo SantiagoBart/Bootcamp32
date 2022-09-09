@@ -1,0 +1,13 @@
+#server:
+#  port: 8761
+
+spring:
+  application:
+    name: discovery-server
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8089
+      username: root
+      password: 12345678
+      label: main
