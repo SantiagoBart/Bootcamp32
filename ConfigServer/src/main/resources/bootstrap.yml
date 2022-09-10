@@ -7,9 +7,11 @@ spring:
     config:      
       server:
         git:
-          uri: http://github.com/SantiagoBart/Bootcamp32Config.git
+          uri: https://github.com/SantiagoBart/Bootcamp32Config.git
           username: santiagobart
-          password: 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            
+          password: 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
+          force-pull: true
+          clone-on-start: false
   security:
     user:
       name: root
