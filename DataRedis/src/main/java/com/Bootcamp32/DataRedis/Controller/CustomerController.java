@@ -33,12 +33,12 @@ public class CustomerController {
     }
 
     @PostMapping
-    public void createAfiliado(@RequestBody Customer afiliado){
-    	service.save(afiliado);
+    public void create(@RequestBody Customer customer){
+    	service.save(customer);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAfiliado(@PathVariable String id){
+    public void delete(@PathVariable String id){
     	service.delete(id);
     }
 }

@@ -16,5 +16,11 @@ public class Product {
 	
 	private String name;
 	
+	private Double maintanceComission;
+	
+	private Integer unlimitedMoves;
+	
+	private Integer moveCount;	
+	
 	private ProductType type;
 }
