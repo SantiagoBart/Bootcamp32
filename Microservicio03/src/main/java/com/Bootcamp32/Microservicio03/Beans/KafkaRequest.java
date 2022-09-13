@@ -58,8 +58,4 @@ public class KafkaRequest {
 		this.id = id;
 		this.message = message;
 	}
-
-	public KafkaRequest() {
-		super();
-	}
 }

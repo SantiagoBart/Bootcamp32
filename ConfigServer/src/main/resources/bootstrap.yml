@@ -9,7 +9,7 @@ spring:
         git:
           uri: https://github.com/SantiagoBart/Bootcamp32Config.git
           username: santiagobart
-          password: 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
+          password: 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
           force-pull: true
           clone-on-start: false
   security:
