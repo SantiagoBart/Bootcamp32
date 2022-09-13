@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.Bootcamp32.Microservicio01.Model.Customer;
 
 @Repository
-public interface ICustomerRepository extends MongoRepository<Customer,Integer>{
+public interface ICustomerRepository extends MongoRepository<Customer, Integer>{
 
 }

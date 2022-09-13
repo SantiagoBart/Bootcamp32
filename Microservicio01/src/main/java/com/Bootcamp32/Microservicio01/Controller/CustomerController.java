@@ -6,15 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Bootcamp32.Microservicio01.Model.Customer;
-import com.Bootcamp32.Microservicio01.Model.Product;
 import com.Bootcamp32.Microservicio01.Service.ICustomerService;
-import com.Bootcamp32.Microservicio01.Service.IProductService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -89,5 +88,27 @@ public class CustomerController {
 		}
 		
 		return new ResponseEntity<Mono<Void>>(response, HttpStatus.OK);
+	}
+	
+	@GetMapping("/edit/{id}")
+	public ResponseEntity<Mono<Customer>> edit(@PathVariable Integer id)
+	{
+		Mono<Customer> response = null;
+		try
+		{
+			logger.info("Clientes: Obtener Iniciando");
+			response=service.findById(id);
+		}
+		catch(Exception ex)
+		{
+			logger.info("Clientes: Obtener Error: " + ex.getMessage());
+			return new ResponseEntity<Mono<Customer>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		finally
+		{
+			logger.info("Clientes: Obtener Terminado");
+		}
+		
+		return new ResponseEntity<Mono<Customer>>(response, HttpStatus.OK);
 	}
 }

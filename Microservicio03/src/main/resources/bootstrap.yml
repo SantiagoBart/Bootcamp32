@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: Micro03  
+  cloud:
+    config:
+      uri: http://localhost:8089
+      username: root
+      password: 12345678
